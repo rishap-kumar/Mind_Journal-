@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Mind Journal</title>
+
+    <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
+</head>
+
+<body class="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 to-pink-500">
+
+    <div class="bg-white w-96 rounded-xl shadow-xl p-8">
+
+        <h1 class="text-3xl font-bold text-center mb-2">
+            Create Account
+        </h1>
+
+        <p class="text-center text-gray-500 mb-6">
+            Join Mind Journal
+        </p>
+
+        <form method="POST" action="{% url 'saveuser' %}" >
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Full Name"
+                required
+                class="w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+ 
+            <input
+                type="Realname"
+                name="realname"
+                placeholder="Realname"
+                required
+                class="w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+                class="w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+            <input
+                type="password"
+                name="confirm_password"
+                placeholder="Confirm Password"
+                required
+                class="w-full border border-gray-300 rounded-lg p-3 mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+            <button
+                type="submit"
+                class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                Sign Up
+            </button>
+             <span>
+                {{error}}
+            </span>
+        </form>
+
+        <p class="text-center mt-6 text-gray-600">
+           
+            <a href="{% url 'login' %}" class="text-blue-600 font-semibold hover:underline">
+                Login
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html>

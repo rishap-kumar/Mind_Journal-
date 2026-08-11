@@ -1,0 +1,127 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mind Journal</title>
+
+    <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
+</head>
+
+<body class="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 to-pink-500">
+
+    <div class="bg-white w-96 rounded-xl shadow-xl p-8">
+
+        <h1 class="text-3xl font-bold text-center mb-2">
+            Welcome Back
+        </h1>
+
+        <p class="text-center text-gray-500 mb-6">
+            Login to your Mind Journal
+        </p>
+
+         <form method="POST" action="{% url 'authenticate' %}" >
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                class="w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                class="w-full border border-gray-300 rounded-lg p-3 mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+            <button
+                type="submit"
+                class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                Login
+            </button>
+            <span>
+                {{error}}
+            </span> 
+        </form>
+
+        <p class="text-center mt-6 text-gray-600">
+            Don't have an account?
+            <a href="{% url 'signup' %}" class="text-blue-600 font-semibold hover:underline">
+                Sign Up
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html> 
+
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
+</head>
+
+<body class="min-h-screen flex justify-center items-center bg-gray-100">
+
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
+
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">
+                🏗️ Welcome Back
+            </h1>
+
+            <p class="text-gray-500 mt-2">
+                Login to access your Building Material Management System
+            </p>
+        </div>
+
+        {% if error %}
+        <div class="mb-4 p-3 rounded-lg bg-red-100 border border-red-300 text-red-700 text-center">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{% url 'authenticate' %}">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                class="w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500">
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                class="w-full border border-gray-300 rounded-lg p-3 mb-6 focus:outline-none focus:ring-2 focus:ring-orange-500">
+
+            <button
+                type="submit"
+                class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold p-3 rounded-lg transition duration-300">
+                Login
+            </button>
+
+        </form>
+
+        <p class="text-center mt-6 text-gray-600">
+            Don't have an account?
+            <a href="{% url 'signup' %}" class="text-orange-600 font-semibold hover:underline">
+                Sign Up
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html> {% endcomment %}

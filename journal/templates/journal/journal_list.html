@@ -1,0 +1,20 @@
+{% extends "journal/menu.html" %}
+{% block content %}
+    <div class="container" class="text-black">
+        <table border=1>
+            <tr>
+                <th>Title </th>
+                <th>Thought </th>
+                <th>time</th>
+            </tr>
+            {% for i in journal %}
+            <tr>
+                <td>{{i.title}}</td>
+                <td>{{i.thought}}</td>
+                <td>{{i.created_at}}</td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+    </div>
+{% endblock content %}

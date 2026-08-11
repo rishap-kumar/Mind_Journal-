@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Enter Title and Thought U want to Update</h2>
+<form action="/journal/update_journal/" method="post">
+    {% csrf_token %}
+    <div>
+        Title<input type="text" name='title'>
+    </div>
+    <div>
+        Thought <textarea name="thought"></textarea>
+    </div>
+    <button class="bg-white rounded-none">Update</button>
+</form>
+
+{% endblock %}

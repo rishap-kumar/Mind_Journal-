@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 flex items-center justify-center p-8">
+
+    <div class="w-full max-w-6xl grid md:grid-cols-2 gap-12 items-center">
+
+        <!-- Left Side -->
+        <div>
+
+            <h1 class="text-5xl font-bold text-white leading-tight">
+                Welcome,
+                <span class="text-emerald-400">
+                    {{ request.user.username }}
+                </span>
+                👋
+            </h1>
+
+            <p class="mt-6 text-lg text-gray-300 leading-8">
+                Every thought has value.
+                Capture your ideas, memories and emotions in one safe place.
+            </p>
+
+            <div class="mt-10 bg-slate-800 rounded-2xl p-6 shadow-xl">
+
+                <h3 class="text-xl font-semibold text-emerald-400 mb-3">
+                    ✨ Daily Reminder
+                </h3>
+
+                <p class="text-gray-300 italic">
+                    "The faintest ink is better than the best memory."
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Right Side -->
+        <div class="bg-white rounded-3xl shadow-2xl p-8">
+
+            <h2 class="text-3xl font-bold text-slate-800 text-center mb-2">
+                📝 New Journal Entry
+            </h2>
+
+            <p class="text-center text-gray-500 mb-8">
+                What's on your mind today?
+            </p>
+
+            <form action="{% url 'savedata' %}" method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-5">
+
+                    <label class="block font-semibold text-slate-700 mb-2">
+                        Title
+                    </label>
+
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="Enter journal title..."
+                        class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-4 focus:ring-emerald-200">
+
+                </div>
+
+                <div class="mb-6">
+
+                    <label class="block font-semibold text-slate-700 mb-2">
+                        Your Thoughts
+                    </label>
+
+                    <textarea
+                        name="thought"
+                        rows="8"
+                        placeholder="Write your thoughts here..."
+                        class="w-full border border-gray-300 rounded-xl p-3 resize-none focus:outline-none focus:ring-4 focus:ring-emerald-200"></textarea>
+
+                </div>
+                <div>
+                    {{error}}
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-emerald-600 to-green-700 text-white py-3 rounded-xl font-semibold text-lg hover:scale-[1.02] transition duration-300">
+
+                    Save Journal
+
+                </button>
+
+            </form>
+
+
+
+            <div class="mt-4">
+
+                <a href="{% url 'viewjournal' %}"
+                class="block text-center w-full bg-slate-800 text-white py-3 rounded-xl font-semibold hover:bg-slate-900 transition">
+
+                📖 View Journals
+
+                </a>
+
+            </div>
+
+            
+            <!-- Logout -->
+            <div class="flex justify-end mt-6">
+
+                <a href="{% url 'logout' %}"
+                   class="text-sm text-gray-500 hover:text-red-600 transition duration-300">
+
+                    🚪 Logout
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
